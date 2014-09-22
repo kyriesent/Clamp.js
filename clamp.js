@@ -261,6 +261,11 @@
             'clamped': clampedText
         }
     }
-
-    window.$clamp = clamp;
+    
+    if (typeof exports === 'object') {
+        // Browserify
+        module.exports = clamp;
+    } else {
+        window.$clamp = clamp;
+    }
 })();
