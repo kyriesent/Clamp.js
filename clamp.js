@@ -245,9 +245,14 @@
             }
         }
         else {
-            var height = getMaxHeight(clampValue);
-            if (height <= element.clientHeight) {
-                clampedText = truncate(getLastChild(element), height);
+            if (clampValue === 0) {
+                clampedText = '';
+                element.nodeValue = '';
+            } else {
+                var height = getMaxHeight(clampValue);
+                if (height <= element.clientHeight) {
+                    clampedText = truncate(getLastChild(element), height);
+                }
             }
         }
         
