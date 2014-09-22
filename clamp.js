@@ -133,7 +133,7 @@
          * height is beneath the passed-in max param.
          */
         function truncate(target, maxHeight) {
-            if (maxHeight == null) {return;}
+            if (!maxHeight) {return;}
             
             /**
              * Resets global variables.
@@ -245,9 +245,14 @@
             }
         }
         else {
-            var height = getMaxHeight(clampValue);
-            if (height <= element.clientHeight) {
-                clampedText = truncate(getLastChild(element), height);
+            if (clampValue === 0) {
+                clampedText = '';
+                element.innerHTML = '';
+            } else {
+                var height = getMaxHeight(clampValue);
+                if (height <= element.clientHeight) {
+                    clampedText = truncate(getLastChild(element), height);
+                }
             }
         }
         
